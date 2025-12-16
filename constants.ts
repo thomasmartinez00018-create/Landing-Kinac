@@ -5,7 +5,7 @@ import {
   Zap, 
   HeartPulse, 
   Accessibility, 
-  BriefcaseMedical,
+  Stethoscope,
   Users,
   Move
 } from 'lucide-react';
@@ -52,7 +52,7 @@ export const SERVICES: Service[] = [
     id: 'kine-individual',
     title: 'Kinesiología 1 a 1',
     description: 'Sesiones de 1 hora con Licenciados UBA. Terapia manual, ejercicio terapéutico y aparatología de vanguardia.',
-    icon: BriefcaseMedical,
+    icon: Stethoscope,
     category: 'clinical'
   },
   {

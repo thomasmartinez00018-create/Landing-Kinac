@@ -44,7 +44,6 @@ const Hero: React.FC<HeroProps> = ({ onSchedule }) => {
                 >
                   Solicitar Evaluación
                 </Button>
-                <Button variant="outline" size="lg" className="w-full sm:w-auto" href="#clases">Ver Clases Grupales</Button>
               </div>
             </Reveal>
 
