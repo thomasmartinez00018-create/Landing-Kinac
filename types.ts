@@ -10,7 +10,8 @@ export interface Service {
   title: string;
   description: string;
   icon: LucideIcon;
-  category: 'clinical' | 'group'; // Added category
+  category: 'clinical' | 'group';
+  promo?: string; // Added promo field
 }
 
 export interface Testimonial {

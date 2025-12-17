@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Users, Activity } from 'lucide-react';
+import { ArrowRight, Users, Activity, Tag } from 'lucide-react';
 import { SERVICES } from '../constants';
 import { Reveal } from './ui/Reveal';
 import Button from './ui/Button';
@@ -73,7 +73,16 @@ const Services: React.FC<ServicesProps> = ({ onSchedule }) => {
           <div className="grid md:grid-cols-3 gap-8">
             {groupServices.map((service, index) => (
               <Reveal key={service.id} delay={index * 100}>
-                <div className="bg-accent-50/50 p-8 rounded-2xl border border-accent-100 hover:border-accent-200 hover:shadow-lg transition-all duration-300 h-full flex flex-col items-center text-center">
+                <div className={`relative bg-accent-50/50 p-8 rounded-2xl border transition-all duration-300 h-full flex flex-col items-center text-center ${service.promo ? 'border-accent-400 shadow-lg scale-105 z-10' : 'border-accent-100 hover:border-accent-200 hover:shadow-lg'}`}>
+                  
+                  {/* Promo Badge */}
+                  {service.promo && (
+                    <div className="absolute -top-4 bg-accent-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-md flex items-center gap-1">
+                      <Tag className="w-3 h-3" />
+                      {service.promo}
+                    </div>
+                  )}
+
                   <div className="mb-6 relative">
                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-accent-500 shadow-sm z-10 relative">
                       <service.icon className="w-8 h-8" />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, MessageCircle, ArrowRight } from 'lucide-react';
 import Button from './ui/Button';
 import { CONTACT_INFO } from '../constants';
@@ -13,6 +13,7 @@ declare global {
 interface ScheduleModalProps {
   isOpen: boolean;
   onClose: () => void;
+  promoContext?: string | null;
 }
 
 interface FormData {
@@ -22,13 +23,30 @@ interface FormData {
   availability: string;
 }
 
-const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose }) => {
+const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose, promoContext }) => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     motive: '',
     activityLevel: '',
     availability: ''
   });
+
+  // Pre-fill fields if promo context exists
+  useEffect(() => {
+    if (isOpen && promoContext === 'PROMO_ENERO_2+1') {
+      setFormData(prev => ({
+        ...prev,
+        motive: 'Clases Grupales' // Auto-select the relevant motive
+      }));
+    }
+  }, [isOpen, promoContext]);
+
+  // Validar que todos los campos tengan contenido
+  const isFormValid = 
+    formData.name.trim() !== '' && 
+    formData.motive !== '' && 
+    formData.activityLevel !== '' && 
+    formData.availability !== '';
 
   if (!isOpen) return null;
 
@@ -42,19 +60,26 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!isFormValid) return;
+
     // --- META PIXEL EVENT TRACKING ---
     // Track Lead event
     if (window.fbq) {
       window.fbq('track', 'Lead');
     }
     
+    let closingLine = "Solicito una evaluación.";
+    if (promoContext === 'PROMO_ENERO_2+1') {
+      closingLine = "🎁 Quiero aprovechar la: Promo Enero (2+1) para Gimnasia Integradora.";
+    }
+
     // Construct the message
     const message = `Hola Kinac! Soy *${formData.name}*.
 Busco turno por: *${formData.motive}*.
 Mi nivel de actividad es: *${formData.activityLevel}*.
 Preferiría ir por la: *${formData.availability}*.
 
-Solicito una evaluación.`;
+${closingLine}`;
 
     // Encode and redirect
     const url = `https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodeURIComponent(message)}`;
@@ -72,20 +97,31 @@ Solicito una evaluación.`;
 
       {/* Modal Content */}
       <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in duration-300">
-        <div className="bg-primary-600 px-6 py-4 flex justify-between items-center text-white">
+        <div className={`px-6 py-4 flex justify-between items-center text-white transition-colors ${promoContext ? 'bg-accent-600' : 'bg-primary-600'}`}>
           <div className="flex items-center gap-2">
             <MessageCircle className="w-5 h-5" />
-            <h3 className="font-serif font-bold text-lg">Solicitar Evaluación</h3>
+            <h3 className="font-serif font-bold text-lg">
+              {promoContext ? 'Canjear Promo Enero' : 'Solicitar Evaluación'}
+            </h3>
           </div>
-          <button onClick={onClose} className="hover:bg-primary-700 p-1 rounded-full transition-colors">
+          <button onClick={onClose} className="hover:bg-white/20 p-1 rounded-full transition-colors">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         <div className="p-6 md:p-8">
-          <p className="text-gray-600 mb-6 text-sm md:text-base">
-            Para asesorarte mejor, por favor respondé estas 4 preguntas breves antes de conectarte con nuestro equipo por WhatsApp.
-          </p>
+          {promoContext ? (
+            <div className="mb-6 bg-accent-50 border border-accent-100 p-4 rounded-lg">
+              <p className="text-accent-800 text-sm font-medium">
+                ¡Genial! Estás a un paso de tu regalo 🎁. <br/>
+                Por favor completá estos datos para agendar tu primera clase.
+              </p>
+            </div>
+          ) : (
+            <p className="text-gray-600 mb-6 text-sm md:text-base">
+              Para asesorarte mejor, por favor respondé estas 4 preguntas breves antes de conectarte con nuestro equipo por WhatsApp.
+            </p>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Pregunta 1: Nombre */}
@@ -169,8 +205,13 @@ Solicito una evaluación.`;
             </div>
 
             <div className="pt-2">
-              <Button type="submit" className="w-full justify-center">
-                Continuar a WhatsApp <ArrowRight className="ml-2 w-5 h-5" />
+              <Button 
+                type="submit" 
+                className={`w-full justify-center ${promoContext ? 'bg-accent-600 hover:bg-accent-700' : ''}`}
+                disabled={!isFormValid}
+              >
+                {promoContext ? 'Confirmar Promo en WhatsApp' : 'Continuar a WhatsApp'} 
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
           </form>

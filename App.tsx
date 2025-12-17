@@ -9,11 +9,22 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import ScheduleModal from './components/ScheduleModal';
 import FloatingCTA from './components/FloatingCTA';
+import PromoPopup from './components/PromoPopup';
 
 const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [promoContext, setPromoContext] = useState<string | null>(null);
 
-  const openModal = () => setIsModalOpen(true);
+  const openModal = () => {
+    setPromoContext(null); // Reset promo context for standard opens
+    setIsModalOpen(true);
+  };
+
+  const openPromoModal = () => {
+    setPromoContext('PROMO_ENERO_2+1');
+    setIsModalOpen(true);
+  };
+
   const closeModal = () => setIsModalOpen(false);
 
   return (
@@ -29,7 +40,12 @@ const App: React.FC = () => {
       </main>
       <Footer onSchedule={openModal} />
       
-      <ScheduleModal isOpen={isModalOpen} onClose={closeModal} />
+      <ScheduleModal 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+        promoContext={promoContext}
+      />
+      <PromoPopup onClaim={openPromoModal} />
       <FloatingCTA onClick={openModal} />
     </div>
   );

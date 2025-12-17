@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, MapPin } from 'lucide-react';
+import { Star, MapPin, Gift } from 'lucide-react';
 import Button from './ui/Button';
 import { Reveal } from './ui/Reveal';
 
@@ -16,9 +16,16 @@ const Hero: React.FC<HeroProps> = ({ onSchedule }) => {
           {/* Left: Copy (Mobile: Order 1, Desktop: Order 1) */}
           <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
             <Reveal priority>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-700 text-sm font-semibold mb-6 border border-primary-100">
-                <MapPin className="w-4 h-4" />
-                <span>Recoleta, Buenos Aires</span>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-700 text-sm font-semibold border border-primary-100">
+                    <MapPin className="w-4 h-4" />
+                    <span>Recoleta, Buenos Aires</span>
+                </div>
+                {/* PROMO BADGE */}
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-100 text-accent-800 text-sm font-bold border border-accent-200 animate-pulse">
+                    <Gift className="w-4 h-4" />
+                    <span>Promo Enero: +1 Clase Gratis</span>
+                </div>
               </div>
             </Reveal>
 

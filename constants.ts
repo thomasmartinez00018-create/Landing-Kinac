@@ -76,7 +76,8 @@ export const SERVICES: Service[] = [
     title: 'Gimnasia Integradora',
     description: 'Circuitos de fuerza y coordinación para adultos. Mejora tu condición general en grupo.',
     icon: Users,
-    category: 'group'
+    category: 'group',
+    promo: '¡PROMO ENERO! 2 clases semanales + 1 de regalo 🎁'
   },
   {
     id: 'taller-corporal',
