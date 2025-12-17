@@ -3,6 +3,13 @@ import { X, MessageCircle, ArrowRight } from 'lucide-react';
 import Button from './ui/Button';
 import { CONTACT_INFO } from '../constants';
 
+// Add definition for fbq to avoid TS errors
+declare global {
+  interface Window {
+    fbq: any;
+  }
+}
+
 interface ScheduleModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -36,9 +43,10 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose }) => {
     e.preventDefault();
     
     // --- META PIXEL EVENT TRACKING ---
-    // Este es el punto único de conversión.
-    // Aquí puedes agregar: fbq('track', 'Lead');
-    // console.log("Evento Lead Disparado"); 
+    // Track Lead event
+    if (window.fbq) {
+      window.fbq('track', 'Lead');
+    }
     
     // Construct the message
     const message = `Hola Kinac! Soy *${formData.name}*.
