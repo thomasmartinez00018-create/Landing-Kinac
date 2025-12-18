@@ -36,7 +36,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose, promoCon
     if (isOpen && promoContext === 'PROMO_ENERO_2+1') {
       setFormData(prev => ({
         ...prev,
-        motive: 'Clases Grupales' // Auto-select the relevant motive
+        motive: 'Taller Corporal' // Updated motive for promo
       }));
     }
   }, [isOpen, promoContext]);
@@ -63,14 +63,13 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose, promoCon
     if (!isFormValid) return;
 
     // --- META PIXEL EVENT TRACKING ---
-    // Track Lead event
     if (window.fbq) {
       window.fbq('track', 'Lead');
     }
     
     let closingLine = "Solicito una evaluación.";
     if (promoContext === 'PROMO_ENERO_2+1') {
-      closingLine = "🎁 Quiero aprovechar la: Promo Enero (2+1) para Gimnasia Integradora.";
+      closingLine = "🎁 Quiero aprovechar la: Promo Enero (2+1) para Taller Corporal.";
     }
 
     // Construct the message
@@ -155,11 +154,11 @@ ${closingLine}`;
                 onChange={handleChange}
               >
                 <option value="" disabled>Seleccioná una opción</option>
-                <option value="Dolor o Lesión">Dolor o Lesión Deportiva</option>
-                <option value="Post-quirúrgico">Rehabilitación Post-quirúrgica</option>
-                <option value="Columna">Dolor de Columna / Postura</option>
-                <option value="Clases Grupales">Interés en Clases Grupales</option>
-                <option value="Acupuntura">Acupuntura / Bienestar</option>
+                <option value="Kinesiología Integral">Kinesiología Integral</option>
+                <option value="Rehabilitación Deportiva">Rehabilitación Deportiva</option>
+                <option value="Rehabilitación Adultos Mayores">Rehabilitación Adultos Mayores</option>
+                <option value="Taller Corporal">Interés en Taller Corporal</option>
+                <option value="Ejercicios Terapéuticos">Ejercicios Terapéuticos</option>
               </select>
             </div>
 
@@ -179,7 +178,7 @@ ${closingLine}`;
                 <option value="" disabled>Seleccioná una opción</option>
                 <option value="Sedentario">No, soy sedentario/a</option>
                 <option value="Recreativo">Sí, de forma recreativa</option>
-                <option value="Alto Rendimiento">Sí, entreno alto rendimiento</option>
+                <option value="Deportista">Sí, entreno regularmente</option>
                 <option value="Suspendida por dolor">Suspendida por dolor/lesión</option>
               </select>
             </div>

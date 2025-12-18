@@ -13,7 +13,7 @@ const Hero: React.FC<HeroProps> = ({ onSchedule }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           
-          {/* Left: Copy (Mobile: Order 1, Desktop: Order 1) */}
+          {/* Left: Copy */}
           <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
             <Reveal priority>
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-6">
@@ -37,8 +37,8 @@ const Hero: React.FC<HeroProps> = ({ onSchedule }) => {
 
             <Reveal delay={200} priority>
               <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg leading-relaxed font-light">
-                Rehabilitación Deportiva, Kinesiología 1 a 1 y Clases de Movimiento. 
-                Un espacio profesional y social donde volver a entrenar sin miedo.
+                Rehabilitación Deportiva y Clases de Movimiento. 
+                Un espacio profesional para entrenar sin miedo.
               </p>
             </Reveal>
 
@@ -72,11 +72,10 @@ const Hero: React.FC<HeroProps> = ({ onSchedule }) => {
             </Reveal>
           </div>
 
-          {/* Right: Image (Mobile: Order 2, Desktop: Order 2) */}
+          {/* Right: Image */}
           <div className="order-2 relative mt-8 lg:mt-0">
             <Reveal delay={200} priority>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-video md:aspect-auto md:h-[600px] border-4 border-white ring-1 ring-gray-100">
-                 {/* Raw image, no filters */}
                  <img 
                    src="https://i.postimg.cc/DmK4h0Dw/Video-recorriendo-la-sala-de-ejercicio-2.avif" 
                    alt="Sala de ejercicios Kinac Recoleta" 

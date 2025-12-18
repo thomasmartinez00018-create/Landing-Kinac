@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, GraduationCap, ArrowRight } from 'lucide-react';
+import { GraduationCap, ArrowRight } from 'lucide-react';
 import { Reveal } from './ui/Reveal';
 import Button from './ui/Button';
 
@@ -8,13 +8,6 @@ interface MethodologyProps {
 }
 
 const Methodology: React.FC<MethodologyProps> = ({ onSchedule }) => {
-  const benefits = [
-    "Atención 1 a 1 en sesiones de 1 hora.",
-    "Licenciados UBA especializados.",
-    "Aparatología moderna (Magneto, Electro, Ultrasonido).",
-    "Ambiente social cálido y motivador."
-  ];
-
   return (
     <section id="metodologia" className="py-16 md:py-24 bg-white overflow-hidden border-t border-gray-100 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,23 +48,14 @@ const Methodology: React.FC<MethodologyProps> = ({ onSchedule }) => {
                 <span className="text-primary-700">un lugar de encuentro y bienestar.</span>
               </h2>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                En Kinac no sos un número. Nuestro equipo de Licenciados se formó en la Universidad de Buenos Aires (UBA) y se especializa en Rehabilitación Deportiva y Terapia Manual.
-                <br/><br/>
-                Combinamos la rigurosidad clínica en sesiones individuales de 1 hora con la calidez de nuestras actividades grupales, donde los pacientes comparten su recuperación y generan vínculos.
+                Nuestro equipo de Licenciados se formó en la Universidad de Buenos Aires (UBA) y se especializa en Rehabilitación Deportiva y Terapia Manual. Combinamos la rigurosidad clínica con la calidez de un espacio diseñado para que recuperes tu mejor versión en un entorno seguro.
               </p>
 
-              <ul className="space-y-4 mb-8">
-                {benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <CheckCircle2 className="w-6 h-6 text-accent-500 mr-3 flex-shrink-0" />
-                    <span className="text-gray-700 font-medium">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Button onClick={onSchedule} className="w-full md:w-auto">
-                Conocer al equipo <ArrowRight className="ml-2 w-5 h-5"/>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button onClick={onSchedule} className="w-full md:w-auto">
+                  Agendar reunión <ArrowRight className="ml-2 w-5 h-5"/>
+                </Button>
+              </div>
             </Reveal>
           </div>
 

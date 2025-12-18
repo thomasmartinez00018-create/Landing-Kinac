@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Users, Activity, Tag } from 'lucide-react';
+import { ArrowRight, Activity, Tag } from 'lucide-react';
 import { SERVICES } from '../constants';
 import { Reveal } from './ui/Reveal';
 import Button from './ui/Button';
@@ -21,9 +21,9 @@ const Services: React.FC<ServicesProps> = ({ onSchedule }) => {
             <Reveal>
               <div>
                 <span className="text-primary-600 font-bold tracking-wide uppercase text-xs font-sans">Consultorio</span>
-                <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2">Tratamientos Individuales</h2>
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2">Tratamientos Kinésicos</h2>
                 <p className="mt-4 text-gray-600 max-w-2xl">
-                  Sesiones 1 a 1 de 1 hora de duración. Combinamos terapia manual, fisioterapia y acupuntura para resolver tu dolencia.
+                  Sesiones profesionales con Licenciados UBA. Combinamos terapia manual, ejercicios terapéuticos y fisioterapia analgésica para tu recuperación integral.
                 </p>
               </div>
             </Reveal>
@@ -65,7 +65,7 @@ const Services: React.FC<ServicesProps> = ({ onSchedule }) => {
               <span className="text-accent-600 font-bold tracking-wide uppercase text-xs font-sans">Comunidad Kinac</span>
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2 mb-4">Clases y Talleres Grupales</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Espacios de movimiento supervisado para mantenerte sano, activo y en compañía.
+                Espacios de movimiento supervisado para mantenerte sano y activo en un entorno de cuidado.
               </p>
             </Reveal>
           </div>
