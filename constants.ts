@@ -3,11 +3,11 @@ import {
   Bone, 
   UserCheck, 
   Zap, 
-  HeartPulse, 
-  Accessibility, 
   Stethoscope,
   Users,
-  Move
+  Move,
+  Dumbbell,
+  Heart
 } from 'lucide-react';
 import { FAQItem, NavLink, PainPoint, Service, Testimonial } from './types';
 
@@ -34,32 +34,32 @@ export const PAIN_POINTS: PainPoint[] = [
   {
     id: 'senior',
     title: 'Mantenimiento y Salud',
-    description: 'Espacios seguros para ganar fuerza, equilibrio y confianza, en un ambiente social y motivador.',
+    description: 'Espacios seguros para ganar fuerza, equilibrio y confianza, en un ambiente de cuidado y motivador.',
     icon: Bone
   }
 ];
 
 export const SERVICES: Service[] = [
-  // Clinical Services - Reordered to prioritize Sports/Kine over Acupuncture
+  // Clinical Services
   {
     id: 'deportiva',
-    title: 'Rehabilitación Deportiva',
-    description: 'Retorno al deporte seguro. Evaluaciones biomecánicas para corredores, bailarines y deportistas de alto rendimiento.',
+    title: 'Rehabilitación Traumatológica y Deportiva',
+    description: 'Retorno al movimiento seguro. Evaluaciones biomecánicas para personas activas, corredores y bailarines.',
     icon: Activity,
     category: 'clinical'
   },
   {
-    id: 'kine-individual',
-    title: 'Kinesiología 1 a 1',
-    description: 'Sesiones de 1 hora con Licenciados UBA. Terapia manual, ejercicio terapéutico y aparatología de vanguardia.',
+    id: 'kine-integral',
+    title: 'Kinesiología Integral',
+    description: 'Sesiones profesionales con Licenciados UBA. Terapia manual, ejercicio terapéutico y fisioterapia analgésica.',
     icon: Stethoscope,
     category: 'clinical'
   },
   {
-    id: 'acupuntura',
-    title: 'Acupuntura y Dolor',
-    description: 'Complemento terapéutico para manejo del dolor agudo y procesos inflamatorios.',
-    icon: HeartPulse,
+    id: 'ejercicios-terapeuticos',
+    title: 'Ejercicios Terapéuticos',
+    description: 'Programas personalizados para recuperar movilidad y fuerza funcional tras una lesión o cirugía.',
+    icon: Dumbbell,
     category: 'clinical'
   },
   
@@ -72,18 +72,18 @@ export const SERVICES: Service[] = [
     category: 'group'
   },
   {
-    id: 'gimnasia',
-    title: 'Gimnasia Integradora',
-    description: 'Circuitos de fuerza y coordinación para adultos. Mejora tu condición general en grupo.',
+    id: 'taller-corporal',
+    title: 'Taller Corporal',
+    description: 'Exploración y despliegue de las posibilidades de movimiento integrando coordinación, equilibrio, fuerza, flexibilidad y escucha postural.',
     icon: Users,
     category: 'group',
     promo: '¡PROMO ENERO! 2 clases semanales + 1 de regalo 🎁'
   },
   {
-    id: 'taller-corporal',
-    title: 'Taller Corporal',
-    description: 'Reeducación funcional. Recuperá confianza en tu cuerpo tras períodos de dolor o sedentarismo.',
-    icon: Accessibility,
+    id: 'rehab-mayores',
+    title: 'Rehabilitación para Adultos Mayores',
+    description: 'Programas especializados para mantener la autonomía, el equilibrio y la fuerza en un entorno seguro.',
+    icon: Heart,
     category: 'group'
   }
 ];
@@ -91,23 +91,44 @@ export const SERVICES: Service[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't1',
-    name: 'Carolina P.',
-    role: 'Alumna Taller FLEX',
-    content: 'Empecé el taller para mejorar mi elongación para danza. El cambio en mi control corporal y estabilidad fue increíble. El grupo es súper motivador.',
+    name: 'Manu Risso',
+    role: 'Local Guide',
+    content: 'Es un excelente lugar con atención personalizada y un equipo de trabajo muy profesional desde la recepción hasta las kinesiólogas. Mucha cordialidad y amabilidad. Xime una genia!',
     rating: 5
   },
   {
     id: 't2',
-    name: 'Roberto L.',
-    role: 'Paciente Kinesiología',
-    content: 'La atención de una hora completa hace la diferencia. Me operé de meniscos y en Kinac me acompañaron hasta que volví a jugar al tenis.',
+    name: 'Manuela Rossi',
+    role: 'Local Guide',
+    content: 'Soy bailarina y hace muchos años me atiendo con Silvina. Es una genia, más allá de la parte física, su cuidado emocional y su conexión con los pacientes es lo que me hace volver cada vez.',
     rating: 5
   },
   {
     id: 't3',
-    name: 'Marta G.',
-    role: 'Gimnasia Integradora',
-    content: 'Encontré un lugar donde hacer ejercicio a mi ritmo y sentirme cuidada. Los profes son excelentes y el ambiente es muy cálido.',
+    name: 'Diana Man',
+    role: 'Paciente',
+    content: 'El equipo es muy profesional, tiene mucho conocimiento y te cuidan mucho. Empecé por dolores de espalda y terminé haciendo verticales. ¡Altamente recomendable!',
+    rating: 5
+  },
+  {
+    id: 't4',
+    name: 'Valeria Ezcurdia',
+    role: 'Local Guide',
+    content: 'Un lugar muy cálido y atendido por profesionales que están siempre capacitándose. Soy colega de la Lic Silvina Inamine y dimos juntas en KINAC algunos talleres. Sigan así !!!',
+    rating: 5
+  },
+  {
+    id: 't5',
+    name: 'Maria Ester Vázquez Paz',
+    role: 'Paciente',
+    content: 'Estoy muy agradecida a Silvina y todo el equipo. Es un lugar de excelencia que soluciona los problemas físicos con mucha profesionalidad y calidez. Súper recomiendo el lugar.',
+    rating: 5
+  },
+  {
+    id: 't6',
+    name: 'LA CHIQUI x SIEMPRE',
+    role: 'Paciente',
+    content: 'Es EXTRAORDINARIO!!... La dueña es además de un ser suuuper amoroso... mágica... te toca y salís nueva!! No son improvisados... SABEN de verdad!!',
     rating: 5
   }
 ];
@@ -115,30 +136,30 @@ export const TESTIMONIALS: Testimonial[] = [
 export const FAQS: FAQItem[] = [
   {
     id: 'f1',
-    question: '¿Cuánto duran las sesiones individuales?',
-    answer: 'Las sesiones de kinesiología duran aproximadamente 1 hora. Esto nos permite combinar terapia manual, ejercicios y aparatología sin apuros.'
+    question: '¿Cuánto duran las sesiones?',
+    answer: 'Las sesiones de kinesiología duran aproximadamente 1 hora. Esto nos permite combinar terapia manual y fisioterapia analgésica sin apuros.'
   },
   {
     id: 'f2',
     question: '¿Necesito experiencia para las clases grupales?',
-    answer: 'No. Tenemos niveles diferenciados: Taller Corporal y Gimnasia Integradora son de intensidad moderada, mientras que FLEX es más exigente.'
+    answer: 'No. Tenemos niveles diferenciados: Rehabilitación para Adultos Mayores y Taller Corporal son de intensidad moderada, mientras que FLEX es más exigente.'
   },
   {
     id: 'f3',
     question: '¿Quiénes son los profesionales?',
-    answer: 'Nuestro equipo está formado por Licenciados en Kinesiología (UBA) con posgrados en Fisiatría, Deporte y Terapia Manual.'
+    answer: 'Nuestro equipo está formado por Licenciados en Kinesiología (UBA) con amplia experiencia en rehabilitación y ejercicio terapéutico.'
   },
   {
     id: 'f4',
     question: '¿Cómo agendo un turno?',
-    answer: 'Podés escribirnos por WhatsApp. Hacemos una evaluación inicial para derivarte al tratamiento individual o clase grupal que mejor se adapte a vos.'
+    answer: 'Podés escribirnos por WhatsApp. Realizamos una evaluación inicial para definir el tratamiento o clase grupal que mejor se adapte a tus necesidades.'
   }
 ];
 
 export const CONTACT_INFO = {
   phone: '+54 9 11 5622-8072',
-  whatsapp: '+5491156228072', // Sanitized for API
+  whatsapp: '+5491156228072',
   address: 'Dr. Norberto Quirno Costa 1255, Recoleta, CABA',
   email: 'informacion@kinac.com.ar',
-  mapsLink: 'https://maps.app.goo.gl/recoleta-kinac'
+  mapsLink: 'https://www.google.com.ar/maps/place/KINAC+%7C+Centro+de+Kinesiolog%C3%ADa+y+Acupuntura/@-34.5951911,-58.4078438,17z/data=!4m8!3m7!1s0x95bccbf92e037037:0x3a7adaf9f6bbba3!8m2!3d-34.5951911!4d-58.4052635!9m1!1b1!16s%2Fg%2F11kg8lkvwl?hl=es&entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D'
 };
